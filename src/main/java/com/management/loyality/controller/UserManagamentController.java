@@ -18,10 +18,10 @@ public class UserManagamentController {
     }
 
     @RequestMapping("/users/subscribe")
-    public String subscribe(@RequestParam String idCustomer, @RequestParam  String idCompany){
+    public String subscribe(@RequestParam String idcustomer, @RequestParam  String idcompany){
         String result="";
         try{
-           result= subscriptionservice.subscribe(idCustomer,idCompany);
+           result= subscriptionservice.subscribe(idcustomer,idcompany);
 
         }catch (Exception e){
             result="{'status':99, 'description' : ' "+e.getMessage()+"'}";
@@ -30,12 +30,35 @@ public class UserManagamentController {
         }
     }
 
-    @RequestMapping("/users/subscri")
-    @RequestMapping("/company/subscribers")
-    public String subscribesCompany(@RequestParam String idCompany){
+    @RequestMapping("/users/unsubscribe")
+    public String unsubscribe(@RequestParam String idsubscription){
         String result="";
         try{
-            result=subscriptionservice.subscribesList(idCompany);
+            result=subscriptionservice.unsubscribe(idsubscription);
+        }catch (Exception e){
+            result="{'status':99, 'description' : ' "+e.getMessage()+"'}";
+        }finally {
+            return result;
+        }
+    }
+
+    @RequestMapping("/users/checkSubscription")
+    public String checkSubscription(@RequestParam String idcustomer, @RequestParam  String idcompany){
+        String result="";
+        try{
+            result=subscriptionservice.checkSubscription(idcustomer,idcompany);
+        }catch (Exception e){
+            result="{'status':99, 'description' : ' "+e.getMessage()+"'}";
+        }finally {
+            return result;
+        }
+    }
+
+    @RequestMapping("/company/list/subscribers")
+    public String subscribesCompany(@RequestParam String idcompany){
+        String result="";
+        try{
+            result=subscriptionservice.subscribesList(idcompany);
         }catch (Exception e){
             result="{'status':99, 'description' : ' "+e.getMessage()+"'}";
         }finally {

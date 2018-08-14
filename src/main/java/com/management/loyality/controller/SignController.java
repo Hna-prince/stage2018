@@ -70,7 +70,7 @@ public class SignController {
     }
 
     @RequestMapping("/signUp/customer")
-    String signUpCustomer(@RequestParam String lastname, @RequestParam String firstname, @RequestParam String address, @RequestParam String email, @RequestParam String phonenumber, @RequestParam String password, @RequestParam int gender, @RequestParam String profil, @RequestParam int status, @RequestParam String birthdate ){
+    String signUpCustomer(@RequestParam String lastname, @RequestParam String firstname, @RequestParam String address, @RequestParam String email, @RequestParam String phonenumber, @RequestParam String password, @RequestParam int gender, @RequestParam String profil, @RequestParam String birthdate ){
         String result="";
         try {
             result=customerService.insertCustomer(lastname, firstname, address, email, phonenumber, password, gender, profil,birthdate);

@@ -82,4 +82,30 @@ public class SubscriptionServiceImplementation implements  SubscriptionService{
         }
     }
 
+    @Override
+    public String checkSubscription(String idCustomer, String idCompany) throws Exception {
+        String message="";
+        try{
+            ObjectMapper mapper = new ObjectMapper();
+            String result              = "";
+            List<Subscription> subscriber=repository.findByCustomerCompany(idCustomer,idCompany);
+            if(subscriber.size() == 0){
+                    message="{\"status\":10, \"message\" : 'Vous n'êtes pas encore abonné(e)'}";
+            }
+            else if (subscriber.get(0).getStatus() == 0){
+                result              =  mapper.writeValueAsString(subscriber.get(0));
+                message="{\"status\":20, \"subscription\" :  "+result+"}";
+            }
+            else {
+                result              =  mapper.writeValueAsString(subscriber.get(0));
+                message="{\"status\":30, , \"message\" : 'Veulliez vous réabonner ',\"subscription\" :  "+result+"}";
+            }
+
+
+            return message;
+        }catch (Exception e){
+            throw  e;
+        }
+    }
+
 }

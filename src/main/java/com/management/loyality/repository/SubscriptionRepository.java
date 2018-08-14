@@ -15,7 +15,7 @@ public interface SubscriptionRepository  extends JpaRepository<Subscription, Str
 
     @Modifying(clearAutomatically = true)
     @Transactional
-    @Query("update Subscription s set s.status = ?1 where s.idsubscription = ?3")
+    @Query("update Subscription s set s.status = ?1 where s.idsubscription = ?2")
     void setStatusSubscription(int status, String idSubscription);
 
     @Query("select s from Subscription s  where s.id= ?1  and s.idcompany = ?2   ")

@@ -14,6 +14,7 @@ public class Subscription {
         this.setId(idCustomer);
         this.setCurrentpointvalue(0);
         this.setStatus(0);
+        this.setLevels(0);
     }
 
     @Id
@@ -29,6 +30,16 @@ public class Subscription {
     int currentpointvalue;
     @Column
     int status;
+    @Column
+    int levels;
+
+    public int getLevels() {
+        return levels;
+    }
+
+    public void setLevels(int levels) {
+        this.levels = levels;
+    }
 
     public int getStatus() {
         return status;

@@ -1,5 +1,6 @@
 package com.management.loyality.controller;
 
+import com.management.loyality.service.CustomerRightService;
 import com.management.loyality.service.SubscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserManagamentController {
 
     private SubscriptionService subscriptionservice;
+    private CustomerRightService rightservice;
     @Autowired
-    public UserManagamentController(SubscriptionService subService){
+    public UserManagamentController(SubscriptionService subService, CustomerRightService rightService){
         this.subscriptionservice=subService;
+        this.rightservice=rightService;
     }
 
     @RequestMapping("/users/subscribe")
@@ -65,4 +68,65 @@ public class UserManagamentController {
             return result;
         }
     }
+
+    @RequestMapping("/company/level/create")
+    public String createLevel(@RequestParam String description, @RequestParam int valuepermission, @RequestParam String idcompany ){
+        String result="";
+        try{
+            result= rightservice.insertLevels(description,valuepermission,idcompany);
+        }catch (Exception e){
+            result="{'status':99, 'description' : ' "+e.getMessage()+"'}";
+        }finally {
+            return result;
+        }
+    }
+
+    @RequestMapping("/company/list/level")
+    public String levelList( @RequestParam String idcompany ){
+        String result="";
+        try{
+            result =  rightservice.levelsList(idcompany);
+        }catch (Exception e){
+            result="{'status':99, 'description' : ' "+e.getMessage()+"'}";
+        }finally {
+            return result;
+        }
+    }
+
+    @RequestMapping("/users/level/change/increase")
+    public String addCriteria(@RequestParam String idsubscription,@RequestParam String idlevels){
+        String result="";
+        try{
+           result= rightservice.insertCriteria(idsubscription,idlevels);
+
+        }catch (Exception e){
+            result="{'status':99, 'description' : ' "+e.getMessage()+"'}";
+        }finally {
+            return result;
+        }
+    }
+
+    @RequestMapping("/users/level/change/decrease")
+    public String updateCustomerLevel(@RequestParam String idsubscription,@RequestParam String idlevels){
+        String result="";
+        try{
+            result = rightservice.deleteCriteria( idsubscription, idlevels);
+        }catch (Exception e){
+            result="{'status':99, 'description' : ' "+e.getMessage()+"'}";
+        }finally {
+            return result;
+        }
+    }
+    @RequestMapping("/users/level/detail")
+    public  String criteriaList(@RequestParam String idsubscription){
+        String result="";
+        try{
+            result = rightservice.criteriaList(idsubscription);
+        }catch (Exception e){
+            result="{'status':99, 'description' : ' "+e.getMessage()+"'}";
+        }finally {
+            return result;
+        }
+    }
+
 }

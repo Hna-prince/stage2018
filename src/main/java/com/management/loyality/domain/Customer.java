@@ -14,7 +14,7 @@ public class Customer extends Users {
     public Customer(String lastname,  String firstname,  String address,  String email,  String phonenumber,  String password,  int gender,  String profil,  int status, String birthdate ) throws Exception{
          super ( lastname, firstname, address, email, phonenumber, password, gender, profil, status );
          this.setBirthdateString(birthdate);
-         this.setLevels(10);
+
     }
     @Column
     LocalDate birthdate;
@@ -34,12 +34,5 @@ public class Customer extends Users {
         this.birthdate = LocalDate.parse(birthdate);
     }
 
-    public int getLevels() {
-        return levels;
-    }
-
-    public void setLevels(int levels) {
-        this.levels = levels;
-    }
 
 }

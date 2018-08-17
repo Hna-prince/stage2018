@@ -35,6 +35,11 @@ public interface SubscriptionRepository  extends JpaRepository<Subscription, Str
     @Query("update Subscription s set s.levels =s.levels+ ?1 where s.idsubscription = ?2")
     void addLevelSubscription(int levels, String idsubscription);
 
+    @Modifying(clearAutomatically = true)
+    @Transactional
+    @Query("update Subscription s set s.currentpointvalue =s.currentpointvalue + ?1 where s.idsubscription = ?2")
+    void setCurrentPointValueSubscriber(int earnedPoint, String idSubscription);
+
 
 
 

@@ -11,9 +11,10 @@ public class Loyalitypoint {
 
     public Loyalitypoint(){}
 
-    public Loyalitypoint(String idearningRule, String idSubscription){
+    public Loyalitypoint(String idearningRule, String idSubscription, int earnedpoint){
         this.setIdearningrule(idearningRule);
         this.setIdsubscription(idSubscription);
+        this.setEarnedpoint(earnedpoint);
 
     }
     @Id
@@ -26,7 +27,7 @@ public class Loyalitypoint {
     @Column
     String idsubscription;
     @Column
-    String earnedpoint;
+    int earnedpoint;
     @Column
     LocalDate acquisitiondate;
 
@@ -54,11 +55,11 @@ public class Loyalitypoint {
         this.idsubscription = idsubscription;
     }
 
-    public String getEarnedpoint() {
+    public int getEarnedpoint() {
         return earnedpoint;
     }
 
-    public void setEarnedpoint(String earnedpoint) {
+    public void setEarnedpoint(int earnedpoint) {
         this.earnedpoint = earnedpoint;
     }
 

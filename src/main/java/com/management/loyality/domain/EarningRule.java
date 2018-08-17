@@ -11,21 +11,30 @@ public class EarningRule {
 
 
     public EarningRule(){}
-    public EarningRule(String idLoyalityType, LocalDate startDate, LocalDate endDate, int earnedPoint, String targetChar){
+    public EarningRule(String idCompany, String idLoyalityType, String startDate, String endDate, int earnedPoint, String targetChar){
         this.setIdloyaltytype(idLoyalityType);
-        this.setStartdate(startDate);
-        this.setEnddate(endDate);
+        this.setStartDateString(startDate);
+        this.setEndDateString(endDate);
         this.setEarnedpoint(earnedPoint);
         this.setCurrentdate(LocalDate.now());
         this.setActive(1);
         this.setTargetchar(targetChar);
+        this.setIdcompany(idCompany);
+    }
+    public EarningRule(String idEarningRule, int earnedpoint, int activity, String targetchar){
+        this.setIdearningrule(idEarningRule);
+        this.setEarnedpoint(earnedpoint);
+        this.setActive(activity);
+        this.setTargetchar(targetchar);
+
     }
     @Id
     @GenericGenerator(name = "id",strategy = "com.management.loyality.domain.IdGenerator",parameters = @org.hibernate.annotations.Parameter(name = "predicat", value = "RUL"))
     @GeneratedValue(generator = "id")
     @Column
     String idearningrule;
-
+    @Column
+    String idcompany;
     @Column
     String idloyaltytype;
     @Column
@@ -41,6 +50,8 @@ public class EarningRule {
     @Column
     String targetchar;
 
+    public void setStartDateString(String startDate){this.startdate=LocalDate.parse(startDate);}
+    public void setEndDateString(String endDate){ this.enddate=  LocalDate.parse(endDate);}
     public String getIdearningrule() {
         return idearningrule;
     }
@@ -103,5 +114,13 @@ public class EarningRule {
 
     public void setTargetchar(String targetchar) {
         this.targetchar = targetchar;
+    }
+
+    public String getIdcompany() {
+        return idcompany;
+    }
+
+    public void setIdcompany(String idcompany) {
+        this.idcompany = idcompany;
     }
 }

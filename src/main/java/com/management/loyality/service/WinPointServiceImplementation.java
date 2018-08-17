@@ -1,7 +1,7 @@
 package com.management.loyality.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.management.loyality.domain.EarningRule;
+import com.management.loyality.domain.Earningrule;
 import com.management.loyality.domain.Loyalitypoint;
 import com.management.loyality.domain.Loyaltytype;
 import com.management.loyality.domain.Subscription;
@@ -33,11 +33,13 @@ public class WinPointServiceImplementation implements WinPointService {
 
     }
 
+
     @Override
+    @Transactional
     public String insertLoyaltyType(String loyaltyName, String descriptions, int statusType) throws Exception {
         try {
             Loyaltytype oneLoyaltyType= new Loyaltytype(loyaltyName, descriptions, statusType);
-            loyaltytyperepository.save(oneLoyaltyType);
+            loyaltytyperepository.saveAndFlush(oneLoyaltyType);
             return "{\"status\":0, \"description\": \" Un nouveau type de fidélité a été créé\" }";
         }
         catch (Exception e){
@@ -64,12 +66,13 @@ public class WinPointServiceImplementation implements WinPointService {
     }
 
     @Override
+    @Transactional
     public String defineEarningRule(String idCompany,String idLoyalityType,String startdate, String enddate, int earnedpoint, String targetchar) throws Exception {
         try {
-            EarningRule oneEarningRule= new EarningRule(idCompany,idLoyalityType,startdate, enddate, earnedpoint,targetchar);
-            earnrulerepository.save(oneEarningRule);
+            Earningrule oneEarningRule= new Earningrule(idCompany,idLoyalityType,startdate, enddate, earnedpoint,targetchar);
+            earnrulerepository.saveAndFlush(oneEarningRule);
 
-            return "{\"status\":0, \"description\": \" Un nouveau type de fidélité a été créé\" }";
+            return "{\"status\":0, \"description\": \" Une nouvelle règle pour gagner des points a été établie\" }";
         }
         catch (Exception e){
             throw  e;
@@ -98,7 +101,7 @@ public class WinPointServiceImplementation implements WinPointService {
     @Override
     public String updateEarningRule(String idEarningRule, int earnedpoint, int activity, String targetchar) throws Exception {
         try {
-            EarningRule oneEarningRule = new EarningRule(idEarningRule, earnedpoint,activity,targetchar);
+            Earningrule oneEarningRule = new Earningrule(idEarningRule, earnedpoint,activity,targetchar);
             earnrulerepository.setEarningRule(oneEarningRule);
 
             return "{\"status\":0, \"description\": \" La règle vient d'être modifiée \" }";
@@ -155,7 +158,7 @@ public class WinPointServiceImplementation implements WinPointService {
     @Override
     public String earningRuleListCompany(String idCompany) throws Exception {
         try{
-           List<EarningRule> earningRuleList= earnrulerepository.findByCompany(idCompany);
+           List<Earningrule> earningRuleList= earnrulerepository.findByCompany(idCompany);
             ObjectMapper mapper                 = new ObjectMapper();
             String result                       = mapper.writeValueAsString(earningRuleList);
             return "{\"status\":0, \"earningrulelist\": "+result+" }";

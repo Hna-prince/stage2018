@@ -7,11 +7,11 @@ import java.time.LocalDate;
 
 @Entity
 @Table
-public class EarningRule {
+public class Earningrule {
 
 
-    public EarningRule(){}
-    public EarningRule(String idCompany, String idLoyalityType, String startDate, String endDate, int earnedPoint, String targetChar){
+    public Earningrule(){}
+    public Earningrule(String idCompany, String idLoyalityType, String startDate, String endDate, int earnedPoint, String targetChar){
         this.setIdloyaltytype(idLoyalityType);
         this.setStartDateString(startDate);
         this.setEndDateString(endDate);
@@ -21,7 +21,7 @@ public class EarningRule {
         this.setTargetchar(targetChar);
         this.setIdcompany(idCompany);
     }
-    public EarningRule(String idEarningRule, int earnedpoint, int activity, String targetchar){
+    public Earningrule(String idEarningRule, int earnedpoint, int activity, String targetchar){
         this.setIdearningrule(idEarningRule);
         this.setEarnedpoint(earnedpoint);
         this.setActive(activity);

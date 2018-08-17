@@ -1,0 +1,93 @@
+http://localhost:8080/login?email=mm&password=ll
+
+http://localhost:8080/signUp?lastname=riri&firstname=hna&address=hIIB&email=aa@gmail&phonenumber=024455&password=45245&gender=0&profil=image&status=10
+
+
+http://localhost:8080/testValidEmail?email=an@gmail.com
+
+http://localhost:8080/testCryptage?password=com
+
+http://localhost:8080/login/customer?email=D36DT58HKKKEF50KDYYQD MI6AUDFI&password=P7UDEU3Q 10TAEH
+
+localhost:8080/signUp/customer?lastname=riri&firstname=hna&address=hIIB&email=aa@gmail.com&phonenumber=024455&password=45245&gender=0&profil=image&birthdate=2016-02-02
+
+localhost:8080/signUp/customer?lastname=riri&firstname=hna&address=hIIB&email=aa@gmail.com&phonenumber=024455&password=45245&gender=0&profil=image&birthdate=2016-02-02
+
+localhost:8080/userManagement/signUp/admin?companyname=jumbo&description=supermarche&registeredaddress=siège Akorondrano&lastname=Andre&firstname=Antony&address=hIIB&email=antonie@gmail.com&phonenumber=024455&password=45245&gender=1&profil=default
+
+management
+
+localhost:8080/manage/place/add?idadmin=lolo&address=IIB80A Akorondrano&nameplace=jumboAK
+
+localhost:8080/manage/place/list?idadmin=USR12
+
+localhost:8080/manage/place/update?idplace=PLC8&adress=IV5&nameplace=jumboAntanjombato
+
+localhost:8080/manage/beacon/add?idPlace=PLC8&tagName=welcomeCustomer&description=desc&typeB=0
+
+localhost:8080/manage/beacon/add?idPlace=PLC8&tagName=caisse&description="uuid:"7888555","major":"2244",'minor':4422&typeB=0
+
+localhost:8080/manage/beacon/listByPlace?idplace=PLC8
+
+localhost:8080/manage/beacon/activity?idbeacon=BEA3
+
+localhost:8080/manage/beacon/feature?idBeacon=BEA3&idplace=PLC8&idCampaign=null&tagName=goodbye&active=0&titleNotification=hi!gogo&description=description&typeBeacon=1
+
+localhost:8080/create/company?companyname=jumbo&description=supermarket&registeredaddress=akorondrano
+
+localhost:8080/campaign/type/create?nameCampaignType=MarkdownCard
+
+localhost:8080/campaign/content/create?idcampaigncontenttype=CCT1&idcompany=COM1&title=BabyProm&body=promotion liquidage
+
+
+localhost:8080/manage/beacon/assignCampaign?idbeacon=&idcampaign
+
+localhost:8080/campaign/content/change?idcampaign=CMC6&idcampaigncontenttype=CCT1&title=Maquillage&bodies=Promotion pour la saint valentin
+
+localhost:8080/campaign/list?idcompany=COM1
+
+
+SUBSCRIPTION
+localhost:8080/users/checkSubscription?idcustomer=USR3&idcompany=COM1
+
+localhost:8080/users/subscribe?idcustomer=USR3&idcompany=COM1
+
+localhost:8080/users/unsubscribe?idsubscription=SUB1
+
+LEVELS
+
+localhost:8080/company/level/create?description=VIP&valuepermission=80&idcompany=COM1
+
+localhost:8080/company/list/level?idcompany=COM1
+
+localhost:8080/users/level/change/increase?idsubscription=SUB1&idlevels=LVL2
+
+
+localhost:8080/users/level/change/decrease?idsubscription=SUB1&idlevels=LVL2
+
+localhost:8080/users/level/detail?idsubscription=SUB1
+
+POINT MANAGEMENT
+
+localhost:8080/loyalty/type/create?loyaltyname=enregistrement&description=Lorsqu'un client s'abonne, il gagne des points&statustype=0
+localhost:8080/loyalty/type/create?loyaltyname=Passage dans le magasin&description=Quand un abonné passe , limité à une seule fois dans une journée&statustype=0
+localhost:8080/loyalty/type/create?loyaltyname=partage sur FB&description=Quand un abonné partage une campagne de pub ou encore le lieu&statustype=0
+
+localhost:8080/loyalty/list/default
+
+localhost:8080/company/earningRule/create?idcompany=COM1&idloyaltytype=LTP2&startdate=2018-09-01&enddate=2018-09-05&earnedpoint=100&targetchar=null
+
+localhost:8080/company/earningRule/changeactivity?idearningrule=RUL2
+
+localhost:8080/company/earningRule/update?idearningrule=RUL2&earnedpoint=50&activity=0&targetchar=null
+
+localhost:8080/company/earningRule/list?idcompany=COM1
+
+localhost:8080/users/earnPoint?idearningRule=RUL2&idsubscription=SUB1
+
+localhost:8080/users/currentPoint?idsubscription=SUB1
+
+localhost:8080/users/point/earnHistory?idsubscription=SUB1
+
+
+

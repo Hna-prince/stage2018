@@ -9,16 +9,21 @@ import com.management.loyality.repository.EarningRuleRepository;
 import com.management.loyality.repository.LoyalitypointRepository;
 import com.management.loyality.repository.LoyaltytypeRepository;
 import com.management.loyality.repository.SubscriptionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public class WinPointServiceImplementation implements WinPointService {
 
     LoyaltytypeRepository loyaltytyperepository;
     EarningRuleRepository earnrulerepository;
     SubscriptionRepository subscriptionrepository;
     LoyalitypointRepository loyalitypointrepository;
+
+    @Autowired
 
     public WinPointServiceImplementation(LoyaltytypeRepository loyaltytypeRepository, EarningRuleRepository earnruleRepository, SubscriptionRepository subscriptionrRepository,  LoyalitypointRepository loyalitypointRepository){
          loyaltytyperepository          = loyaltytypeRepository;

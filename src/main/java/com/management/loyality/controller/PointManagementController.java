@@ -124,4 +124,16 @@ public class PointManagementController {
             return result;
         }
     }
+
+    /*@RequestMapping("/testCheck")
+    public String earnedPointHistory(){
+        String result="";
+        try{
+            result= ("it"+String.valueOf(winPointService.checkEarnPointOnceADay("LTP2")));
+        }catch (Exception e){
+            result="{'status':99, 'description' : ' "+e.getMessage()+"'}";
+        }finally {
+            return result;
+        }
+    }*/
 }

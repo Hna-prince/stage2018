@@ -15,6 +15,7 @@ public class Loyalitypoint {
         this.setIdearningrule(idearningRule);
         this.setIdsubscription(idSubscription);
         this.setEarnedpoint(earnedpoint);
+        this.setAcquisitiondate(LocalDate.now());
 
     }
     @Id

@@ -9,4 +9,7 @@ import java.util.List;
 public interface LoyalitypointRepository extends JpaRepository<Loyalitypoint, String> {
     @Query("select lp from Loyalitypoint lp where lp.idsubscription = ?1")
     List<Loyalitypoint> findBySubscriber(String idsubscription);
+
+    @Query("select lp from Loyalitypoint lp where lp.idearningrule = ?1")
+    List<Loyalitypoint> findByEarningRule(String idEarningRule);
 }

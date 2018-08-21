@@ -1,5 +1,7 @@
 package com.management.loyality.service;
 
+import com.management.loyality.domain.Earningrule;
+
 public interface WinPointService {
 
     public String insertLoyaltyType(String loyaltyName, String descriptions, int statusType) throws  Exception;
@@ -14,5 +16,12 @@ public interface WinPointService {
 
     public String  earningPoint(String idEarningRule, String idsubscription) throws  Exception;
     public String earningRuleListCompany(String idCompany) throws  Exception;
+
+    public Boolean ExistEarnPointOnceADay(String idLoyaltyType) throws  Exception;
+    public Boolean checkLoyaltyOnceADay(String idLoyaltyType) throws Exception;
+
+    public String ExistActiveCurrentEarningRule( Earningrule newEarningRule) throws Exception;
+
+
 
 }

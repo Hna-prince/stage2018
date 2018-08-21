@@ -23,5 +23,8 @@ public interface EarningRuleRepository extends JpaRepository<Earningrule, String
     @Query("update Earningrule er set er.earnedpoint = :#{#oneEarnRule.earnedpoint}, er.active=:#{#oneEarnRule.active}, er.targetchar=:#{#oneEarnRule.targetchar} where er.idearningrule = :#{#oneEarnRule.idearningrule}")
     void setEarningRule(@Param("oneEarnRule")Earningrule oneEarnRule);
 
+    @Query("select er from Earningrule er where er.active=?1 and er.idloyaltytype = ?2 order by er.startdate DESC ")
+    List<Earningrule> findActive(int activity, String idLoyaltyType);
+
 
 }
